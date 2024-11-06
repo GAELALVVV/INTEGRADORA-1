@@ -1,0 +1,335 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
+}
+
+/* Backgrounds */
+.home {
+  background-image: url(/img/black-a.jpg);
+  min-height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.about {
+  background-image: url(/img/blue-a.jpg);
+  min-height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.servicios {
+  background-image: url(/img/blue-b.jpg);
+  min-height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.blog {
+  background-image: url(/img/blue-c.jpg);
+  min-height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.contacto {
+  background-image: url(/img/black-a.jpg);
+  min-height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Contenedores */
+.container {
+  background-color: cadetblue;
+  min-height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+header{
+  width: 100%;
+  position:fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  background-color: aliceblue;
+  padding: 20px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 999;
+}
+
+.logo img {
+  height: 25px;
+}
+
+nav a{
+  font-size: 18px;
+  text-transform: capitalize;
+  margin: 15px;
+  padding: 8px;
+  color: #111;
+  font-weight: 500;
+  border-bottom: solid transparent 3px;
+  transition: .3s ease;
+}
+nav a:hover{
+  border-bottom: solid #0050d5 3px;
+  color: #0050d5;
+}
+.btn{
+  display: inline-block;
+  padding: 10px 30px;
+  background-color: #0050d5;
+  color: #fff;
+  border-radius: 10px;
+  transition: .3s ease;
+  font-size: 20px;
+  text-transform: capitalize;
+  font-weight: 600;
+
+}
+#chek{
+  display: none;
+}
+#chek:checked ~ nav{
+  left: 0;
+  opacity: 1;
+}
+
+label{
+  font-size: 35px;
+  cursor: pointer;
+  color: #111;
+  display: none;
+}
+
+@media (max-width:898px){
+  header{
+    padding: 4%;
+    transition: .3s ease;
+  }
+  nav a{
+    margin: 10px;
+    transition: .3s ease;
+  }
+}
+@media(max-width:798px){
+  header nav {
+    position: absolute;
+    left: -100%;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    transition: .3s ease;
+  opacity: 0;
+
+  }
+    header nav a{
+      display: block;
+      text-align: center;
+      padding: 10px;
+      box-shadow: 0 0 10px #0050d5;
+      border-radius: 10px;
+      margin-top: 30px;
+      font-size: 22px;
+    }
+
+  label{
+    display: block;
+  }
+}
+
+section{
+  padding: 6%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.content{
+  text-align: center;
+  position: relative;
+}
+
+.content h1{
+  font-size: 60px;
+  color: #fff;
+  letter-spacing: 1px;
+
+}
+
+.content p{
+  line-height: 1.6;
+  font-size: 17px;
+  color: #eee;
+  margin: 20px 30px;
+}
+section .content .btn{
+  background-color: #fff;
+  color: #0050d5;
+  transition: .3s ease;
+}
+.btn:hover{
+  transform: scale(1.1);
+}
+
+/* footer */
+footer{
+  background-color: rgb(51,60,77);
+  color: #fff;
+  width: 100vw;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center; 
+}
+
+.trademk{
+  font-family: "Poppins", sans-serif
+}
+
+/* Parrafos */
+.parra{
+  line-height: 1.6;
+  font-size: 17px;
+  color: white;
+  margin: 20px 30px;
+}
+
+.login-page {
+  background-image: url(../img/login.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* Centrado del formulario */
+.formulario {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  z-index: 1;
+}
+
+.contenedor-login {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+.contenedor-login h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.contenedor-login input[type="email"],
+.contenedor-login input[type="password"] {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  font-size: 14px;
+  text-align: center;
+  outline: none;
+}
+
+.boton-login {
+  width: 100%;
+  padding: 15px;
+  background-color: #4a76fd;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.boton-login:hover {
+  background-color: #3b5ec8;
+}
+
+.botones-sociales {
+  margin-top: 20px;
+}
+
+.botones-sociales button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.login-google { background-color: #db4437; color: #fff; }
+.login-facebook { background-color: #3b5998; color: #fff; }
+
+.recordarme {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #555;
+}
+
+.recordarme input { margin-right: 8px; }
+
+.enlaces {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.enlaces a {
+  color: #4a76fd;
+  text-decoration: none;
+  display: block;
+  margin-top: 10px;
+}
+
+.enlaces a:hover {
+  text-decoration: underline;
+}
+
+/* Footer específico para la página de login */
+.login-page .footer1 {
+  background-color: rgb(33, 39, 51);
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
