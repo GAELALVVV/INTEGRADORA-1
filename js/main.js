@@ -1,4 +1,5 @@
 // Variable para almacenar el gráfico y evitar múltiples instancias
+// Variable para almacenar el gráfico y evitar múltiples instancias
 let presupuestoChart;
 
 // Función para calcular el presupuesto usando la regla 50/30/20
@@ -7,28 +8,23 @@ function calcularPresupuesto() {
     const ingresos = parseFloat(ingresosInput.value);
 
     if (!isNaN(ingresos) && ingresos > 0) {
-        // Calcular distribuciones de acuerdo a la regla 50/30/20
         const necesidades = ingresos * 0.5;
         const deseos = ingresos * 0.3;
         const ahorro = ingresos * 0.2;
 
-        // Mostrar resultados en el contenedor de resultado
         document.getElementById("resultado").innerHTML = `
             <p>Necesidades: $${necesidades.toFixed(2)}</p>
             <p>Deseos: $${deseos.toFixed(2)}</p>
             <p>Ahorro: $${ahorro.toFixed(2)}</p>
         `;
 
-        // Preparar los datos para el gráfico
         const data = [necesidades, deseos, ahorro];
         const labels = ["Necesidades", "Deseos", "Ahorro"];
 
-        // Destruir el gráfico anterior si existe, para evitar errores al crear un nuevo gráfico
         if (presupuestoChart) {
             presupuestoChart.destroy();
         }
 
-        // Crear el gráfico circular
         const ctx = document.getElementById("graficoPresupuesto").getContext("2d");
         presupuestoChart = new Chart(ctx, {
             type: 'pie',  
@@ -36,8 +32,8 @@ function calcularPresupuesto() {
                 labels: labels,
                 datasets: [{
                     data: data,
-                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'], // Colores para cada sección
-                    borderColor: '#ffffff', // Borde blanco entre las secciones
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+                    borderColor: '#ffffff',
                     borderWidth: 2
                 }]
             },
@@ -47,17 +43,13 @@ function calcularPresupuesto() {
                     legend: {
                         position: 'top',
                         labels: {
-                            font: {
-                                size: 16 // Tamaño de fuente para la leyenda
-                            }
+                            font: { size: 16 }
                         }
                     },
                     title: {
                         display: true,
                         text: 'Distribución del Presupuesto (50/30/20)',
-                        font: {
-                            size: 18
-                        }
+                        font: { size: 18 }
                     },
                     tooltip: {
                         callbacks: {
@@ -76,35 +68,67 @@ function calcularPresupuesto() {
         ingresosInput.focus();
     }
 }
-document.getElementById("loginForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // Evitar el envío del formulario
 
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
+document.getElementById("btn__registrarse").addEventListener("click", register)
+document.getElementById("btn__iniciar-sesion").addEventListener("click", iniciarSesion)
+window.addEventListener("resize", anchoPagina)
 
-    // Credenciales de ejemplo (en una aplicación real, estas deben verificarse en un servidor)
-    const validUsername = "usuario";
-    const validPassword = "contraseña123";
+// Declaracion variables
+var contenedor_login_register = document.querySelector(".contenedor__login-register");
+var formulario_login = document.querySelector(".formulario__login");
+var formulario_register = document.querySelector(".formulario__register");
+var caja_trasera_login = document.querySelector(".caja__trasera-login");
+var caja_trasera_register = document.querySelector(".caja__trasera-register");
 
-    if (username === validUsername && password === validPassword) {
-        alert("Login exitoso");
-        document.getElementById("message").textContent = ""; // Limpiar mensaje de error
-        // Redirigir o realizar alguna acción adicional aquí
-    } else {
-        document.getElementById("message").textContent = "Usuario o contraseña incorrectos";
+function anchoPagina(){
+    if(window.innerWidth >850){
+        caja_trasera_login.style.display = "block";
+        caja_trasera_register.style.display = "block";
+    }else{
+        caja_trasera_register.style.display = "block";
+        caja_trasera_register.style.opacity = "1";
+        caja_trasera_login.style.display = "none";
+        formulario_login.style.display = "block";
+        formulario_register.style.display = "none";
+        contenedor_login_register.style.left = "0px";
     }
-});
+}
 
-// Seleccionar elementos
-const header = document.getElementById("header");
-const footer = document.getElementById("footer");
-const loginButton = document.querySelector("header a[href='#']"); // Selector del botón "Log In"
+function iniciarSesion(){
+    if(window.innerWidth > 850){
+        formulario_register.style.display = "none";
+        contenedor_login_register.style.left = "10px";
+        formulario_login.style.display = "block";
+        caja_trasera_register.style.opacity = "1";
+        caja_trasera_login.style.opacity = "0";
+    } else{
+        formulario_register.style.display = "none";
+        contenedor_login_register.style.left = "0px";
+        formulario_login.style.display = "block";
+        caja_trasera_register.style.display = "block";
+        caja_trasera_login.style.display = "none";
+    }
+    
 
-// Agregar evento para ocultar el header y ajustar el footer al hacer clic en "Log In"
-loginButton.addEventListener("click", function(event) {
-    event.preventDefault(); // Evita la recarga de la página
-    header.style.display = "none"; // Oculta el header
-    footer.style.position = "fixed"; // Fija el footer al final del viewport
-    footer.style.bottom = "0";
-    footer.style.width = "100%";
-});
+}
+
+function register(){
+    if(window.innerWidth > 850){
+        formulario_register.style.display = "block";
+        contenedor_login_register.style.left = "410px";
+        formulario_login.style.display = "none";
+        caja_trasera_register.style.opacity = "0";
+        caja_trasera_login.style.opacity = "1";
+    } else{
+        formulario_register.style.display = "block";
+        contenedor_login_register.style.left = "0px";
+        formulario_login.style.display = "none";
+        caja_trasera_register.style.display = "none";
+        caja_trasera_login.style.display = "block";
+        caja_trasera_login.style.opacity = "1";
+    }
+    
+
+}
+
+
