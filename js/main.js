@@ -130,5 +130,53 @@ function register(){
     
 
 }
+// Enviar los datos del formulario de registro a la API
+document.getElementById("registerForm").addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData.entries());
 
+    try {
+        const response = await fetch('http://localhost:3000/usuarios/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
 
+        const result = await response.json();
+        if (response.ok) {
+            alert('Usuario registrado exitosamente');
+            iniciarSesion(); // Cambia a la vista de inicio de sesión
+        } else {
+            alert(result.error || 'Error al registrar usuario');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Error de conexión');
+    }
+});
+
+document.querySelector(".formulario__login").addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const correo = event.target.querySelector('input[type="text"]').value;
+    const contraseña = event.target.querySelector('input[type="password"]').value;
+
+    try {
+        const response = await fetch('http://localhost:3000/usuarios/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ correo, contraseña })
+        });
+
+        const result = await response.json();
+        if (response.ok) {
+            alert('Inicio de sesión exitoso');
+            // Aquí podrías redirigir al usuario a una página de inicio
+        } else {
+            alert(result.error || 'Error al iniciar sesión');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Error de conexión');
+    }
+});

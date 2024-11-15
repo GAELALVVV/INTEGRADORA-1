@@ -1,21 +1,24 @@
-import mysql from 'mysql2';
+import mysql from 'mysql2/promise';
 
-const connection = mysql.createConnection({
-    host: 'localhost',        // Cambia a la dirección de tu servidor de MySQL, usualmente 'localhost'
-    user: 'root',       // Cambia 'tu_usuario' por el nombre de usuario de tu base de datos MySQL
+const connection = mysql.createPool({
+    host: 'localhost', 
+    user: 'root',
     password: '25879539',
-    port: 3306, // Cambia 'tu_contraseña' por la contraseña de tu usuario de MySQL
-    database: 'Finpera' // Cambia 'tu_base_de_datos' por el nombre de tu base de datos
+    port: 3306,
+    database: 'Finera'
 });
 
-connection.connect((error) => {
-    if (error) {
+// Prueba de conexión
+async function testConnection() {
+    try {
+        await connection.query('SELECT 1');
+        console.log('Conexión a MySQL exitosa');
+    } catch (error) {
         console.error('Error conectando a MySQL:', error);
-        return;
     }
-    console.log('Conexión a MySQL exitosa');
-});
+}
+
+testConnection();
 
 export default connection;
 
-connection.end();
